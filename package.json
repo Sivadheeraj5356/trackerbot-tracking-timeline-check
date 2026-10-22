@@ -1,0 +1,8 @@
+{
+  "name": "trackerbot-tracking-timeline-check",
+  "version": "1.0.0",
+  "description": "QA check for eCommerce order-tracking timelines: carrier detection, out-of-order scans, exceptions and stale-in-transit flags.",
+  "main": "tracker.js",
+  "scripts": { "test": "node --test" },
+  "license": "MIT"
+}
