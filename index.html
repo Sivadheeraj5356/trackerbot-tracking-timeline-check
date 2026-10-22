@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tracking Timeline Check</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <h1>Tracking Timeline Check</h1>
+    <p class="sub">QA for order-tracking timelines before buyers see them. Detects the carrier, rebuilds the scan timeline, and flags out-of-order scans, duplicates, exceptions, scans after delivery, and stale in-transit orders.</p>
+  </header>
+
+  <section class="card">
+    <label class="lbl" for="tn">Tracking number</label>
+    <input id="tn" type="text" placeholder="e.g. 1Z999AA10123456784" autocomplete="off" />
+    <div id="carrier" class="carrier"></div>
+
+    <label class="lbl" for="events">Scan events, one per line: <code>YYYY-MM-DD HH:MM | Status | Location</code></label>
+    <textarea id="events" rows="8" spellcheck="false">2026-10-01 08:00 | Picked up | Origin facility
+2026-10-01 18:20 | In transit | Mumbai hub
+2026-10-02 09:05 | Out for delivery | Local station
+2026-10-02 14:40 | Delivered | Doorstep</textarea>
+
+    <button id="run" type="button">Run check</button>
+  </section>
+
+  <section id="results" class="hidden">
+    <div class="grid">
+      <div class="card">
+        <h2>Findings</h2>
+        <ul id="findings" class="findings"></ul>
+      </div>
+      <div class="card">
+        <h2>Timeline</h2>
+        <ol id="timeline" class="timeline"></ol>
+      </div>
+    </div>
+  </section>
+
+  <footer>Plain HTML, CSS and JavaScript. No external services, build step or secrets. Tests: <code>npm test</code>.</footer>
+</main>
+<script src="tracker.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
